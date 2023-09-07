@@ -1,6 +1,6 @@
 let pin = "1234";
 let ingresar = false;
-
+/*
 function ingreso() {
   console.log(ingresar);
 
@@ -20,8 +20,84 @@ function ingreso() {
 
 ingreso();
 console.log(ingresar);
+*/
+ingresar = true;
 
 
+//--------------------------
+
+const btnSearch = document.querySelector("#btnSearch"),
+  inputIngreso = document.querySelector("#ingreso");
+const contenedor = document.querySelector("#contenedor");
+//--------------------------------
+
+const tipoDeLotesDisponibles = [
+  { tipologia: "a", tamano: 250, frente: 10, fondo: 25, ubicacion: "Esquina de manzana", img: "250metros.png"},
+  { tipologia: "b", tamano: 360, frente: 12, fondo: 30, ubicacion: "Dentro de manzana",  img: "350metros.png"},
+  { tipologia: "c", tamano: 450, frente: 15, fondo: 30, ubicacion: "Dentro de manzana",  img: "450metros.png"},
+  { tipologia: "d", tamano: 560, frente: 16, fondo: 35, ubicacion: "Dentro de manzana",  img: "550metros.png"}];
+
+
+
+
+
+
+
+
+//Funciones de búsqueda
+function buscarServicio(arr, filtro) {
+  const encontrado = arr.find((el) => {
+    return el.tipologia.includes(filtro);//cambie nombre por tipologia
+  });
+  return encontrado;
+}
+function filtrarServicio(arr, filtro) {
+  const filtrado = arr.filter((el) => {
+    return el.tipologia.includes(filtro);// cambie nombre por tipologia
+  });
+  return filtrado;
+}
+function crearHtml(arr) {
+  contenedor.innerHTML = "";
+  let html;
+  for (const el of arr) {
+
+    //cambie nombre por tipologia cambie img por 
+//<img src=" ./img/${el.img}" alt="${el.tipologia}">
+
+    html = `<div class="card">
+    <img src=" ./img/${el.img}" alt="${el.tipologia}"> 
+                <hr>
+                <h3>${el.ubicacion}</h3>
+                <p>Precio: $${el.tamano} </p>
+                  <div class="card-action">
+                    <button class="btn btn-delete" id="${el.frente}">Quitar</button>
+                  </div>
+              </div>`;
+    //se la agrego al contenedor
+    contenedor.innerHTML = contenedor.innerHTML + html;
+  }
+}
+
+btnSearch.addEventListener("click", (e) => {
+  const filtrados = filtrarServicio(tipoDeLotesDisponibles, inputIngreso.value);
+  crearHtml(filtrados);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 if (ingresar) {
 
   //let valorTotalTerreno = 1000;
@@ -60,7 +136,7 @@ if (ingresar) {
 
         }
         tipologiaElegida = prompt("Elejiste opción 2.\n Elija una tipología (a,b,c,d)");
-        
+
         console.log(tipologiaElegida);
         eleccion = filtrarPorTipologia(tipoDeLotesDisponibles, tipologiaElegida);
         console.log();
@@ -70,7 +146,7 @@ if (ingresar) {
 
         alert(" Ud eligió la tipología: " + eleccion[0].tipologia);
         console.log(eleccion[0]);
-        
+
         valorTotalTerreno = eleccion[0].tamano * 1000;
         //nota el valor del metro cuadrado es de 1000 pesos
         console.log(valorTotalTerreno)
@@ -84,11 +160,11 @@ if (ingresar) {
 
 
       case "3":
-        
+
         if (valorTotalTerreno != 0) {
           alert("Elegiste la opción 3\n  El valor total del terreno es de " + valorTotalTerreno + " pesos");
 
-       
+
           console.log(eleccion[0].tamano)
         } else {
           alert("Debe elegir una tipología")
@@ -101,16 +177,16 @@ if (ingresar) {
 
       case "4":
         entregaEnEfectivo = parseFloat(prompt("Elegiste la opcion 4\n ¿Cuanto es la entrega en efectivo que desea realizar?"));
-4
+        4
         //if (entregaEnEfectivo >= 200) {
-          if (entregaEnEfectivo >= (valorTotalTerreno*0.20)) {
+        if (entregaEnEfectivo >= (valorTotalTerreno * 0.20)) {
           saldo = valorTotalTerreno - entregaEnEfectivo;
           alert("Usted desea entregar " + entregaEnEfectivo + " pesos\n Tu entrega está correcta. Supera o es igual al monto minimo que es de por lo menos al 20% del valor del lote. ");
 
-          
+
 
         } else {
-          alert(" Tu entrega dede ser por lo menos igual o superior al 20% del valor del lote elegido. En este caso tu lote tiene un valor de "+ valorTotalTerreno +" pesos, por lo que la entrega mínima debería ser de por lo menos "+ (valorTotalTerreno*0.20)+ " pesos")
+          alert(" Tu entrega dede ser por lo menos igual o superior al 20% del valor del lote elegido. En este caso tu lote tiene un valor de " + valorTotalTerreno + " pesos, por lo que la entrega mínima debería ser de por lo menos " + (valorTotalTerreno * 0.20) + " pesos")
         }
 
         break;
@@ -161,3 +237,4 @@ else {
 
 }
 
+*/
