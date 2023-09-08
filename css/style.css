@@ -55,8 +55,8 @@ form input {
 }
 
 .btn {
-    width: 90px;
-    height: 25px;
+    width:250px;
+    height: 30px;
     border: none;
     background-color: transparent;
     border-radius: 4px;
@@ -66,7 +66,7 @@ form input {
 
 .btn-search, .btn-buscar {
     background-color: rgb(68, 209, 68);
-    width: 130px;
+    width: 300px;
 }
 
 .btn-delete {
@@ -124,4 +124,15 @@ img {
 
 .card-action {
     max-width: 100%;
+}
+
+/*------------------------------------*/
+
+
+
+.card {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
 }
