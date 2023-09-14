@@ -133,5 +133,50 @@ function mostrarInformacionLote(lote) {
   infoLoteDiv.innerHTML = html;
 }
 
+//nuevo agregado
+
+//********************************************   */
+
+
+const user = { nickname: "Fladers", pass: 12345678 };
+/*
+console.log(user); 
+const userJson = JSON.stringify(user);
+localStorage.setItem("user", userJson);
+const userDesdeStorage = JSON.parse(localStorage.getItem("user")); 
+console.log(userDesdeStorage); 
+*/
+const inputUser = document.querySelector("#user"),
+  inputPass = document.querySelector("#pass"),
+  check = document.querySelector("#check"),
+  formulario = document.querySelector("#form-login"),
+  message = document.querySelector("#message");
+
+function guardar(valor) {
+  const user = { usuario: inputUser.value, pass: inputPass.value };
+  //validar que los campos no esten vacios
+  if (valor === "localStorage") {
+    localStorage.setItem("user", JSON.stringify(user));
+  } 
+  if (valor === "sessionStorage") {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }
+      valor === "localStorage" &&
+    localStorage.setItem("user", JSON.stringify(user));
+  valor === "sessionStorage" &&
+    sessionStorage.setItem("user", JSON.stringify(user));
+}
+
+//agrego esto mas
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+    if (check.checked) {
+    guardar("localStorage");
+  } else {
+    guardar("sessionStorage");
+  } 
+  check.checked ? guardar("localStorage") : guardar("sessionStorage");
+});
+
 
 
