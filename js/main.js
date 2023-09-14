@@ -7,25 +7,13 @@ const infoLoteDiv = document.querySelector("#infoLote"); // Agrega un div para m
 
 
 
-
-
-
-
 ingresar = true;
-
-
 
 const tipoDeLotesDisponibles = [
   { tipologia: "a", tamano: 250, frente: 10, fondo: 25, ubicacion: "Esquina de manzana", img: "250metros.png" },
   { tipologia: "b", tamano: 360, frente: 12, fondo: 30, ubicacion: "Dentro de manzana", img: "350metros.png" },
   { tipologia: "c", tamano: 450, frente: 15, fondo: 30, ubicacion: "Dentro de manzana", img: "450metros.png" },
   { tipologia: "d", tamano: 560, frente: 16, fondo: 35, ubicacion: "Dentro de manzana", img: "550metros.png" }];
-
-
-
-
-
-
 
 
 
@@ -37,16 +25,12 @@ function buscarServicio(arr, filtro) {
 }
 
 
-
-
 function mostrarLotes(arr) {
   const muestra = arr.map(element => {
     return element;
   });
   return muestra;
 }
-
-
 
 
 function filtrarServicio(arr, filtro) {
@@ -60,13 +44,12 @@ function crearHtml(arr) {
   let html;
   for (const el of arr) {
 
-   
 
     html = `<div class="card">
     <img src=" ./img/${el.img}" alt="${el.tipologia}"> 
                 <hr>
                 <h3>${el.ubicacion}</h3>
-                <p>Precio: $${el.tamano*1000} </p>
+                <p>Precio: $${el.tamano * 1000} </p>
                   <div class="card-action">
                     <button class="btn btn-delete" id="${el.frente}">Quitar</button>
                   </div>
@@ -87,16 +70,6 @@ ingreso1.addEventListener("click", (e) => {
   const mostrados = mostrarLotes(tipoDeLotesDisponibles);
   crearHtml(mostrados);
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -125,7 +98,7 @@ function mostrarInformacionLote(lote) {
         <li>Frente: ${lote.frente} metros</li>
         <li>Fondo: ${lote.fondo} metros</li>
       </ul>
-      <p>Precio Contado: ${(lote.tamano)*1000}</p>
+      <p>Precio Contado: ${(lote.tamano) * 1000}</p>
 
     </div>
   `;
@@ -133,19 +106,9 @@ function mostrarInformacionLote(lote) {
   infoLoteDiv.innerHTML = html;
 }
 
-//nuevo agregado
 
-//********************************************   */
+const user = { nickname: "pablo", pass: 1234 };
 
-
-const user = { nickname: "Fladers", pass: 12345678 };
-/*
-console.log(user); 
-const userJson = JSON.stringify(user);
-localStorage.setItem("user", userJson);
-const userDesdeStorage = JSON.parse(localStorage.getItem("user")); 
-console.log(userDesdeStorage); 
-*/
 const inputUser = document.querySelector("#user"),
   inputPass = document.querySelector("#pass"),
   check = document.querySelector("#check"),
@@ -157,11 +120,11 @@ function guardar(valor) {
   //validar que los campos no esten vacios
   if (valor === "localStorage") {
     localStorage.setItem("user", JSON.stringify(user));
-  } 
+  }
   if (valor === "sessionStorage") {
     sessionStorage.setItem("user", JSON.stringify(user));
   }
-      valor === "localStorage" &&
+  valor === "localStorage" &&
     localStorage.setItem("user", JSON.stringify(user));
   valor === "sessionStorage" &&
     sessionStorage.setItem("user", JSON.stringify(user));
@@ -170,11 +133,11 @@ function guardar(valor) {
 //agrego esto mas
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
-    if (check.checked) {
+  if (check.checked) {
     guardar("localStorage");
   } else {
     guardar("sessionStorage");
-  } 
+  }
   check.checked ? guardar("localStorage") : guardar("sessionStorage");
 });
 
